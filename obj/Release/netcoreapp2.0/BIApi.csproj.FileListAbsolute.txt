@@ -1,0 +1,11 @@
+C:\Users\nangn_000\Desktop\BIApi\bin\Release\netcoreapp2.0\BIApi.deps.json
+C:\Users\nangn_000\Desktop\BIApi\bin\Release\netcoreapp2.0\BIApi.runtimeconfig.json
+C:\Users\nangn_000\Desktop\BIApi\bin\Release\netcoreapp2.0\BIApi.runtimeconfig.dev.json
+C:\Users\nangn_000\Desktop\BIApi\bin\Release\netcoreapp2.0\BIApi.dll
+C:\Users\nangn_000\Desktop\BIApi\bin\Release\netcoreapp2.0\BIApi.pdb
+C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.csproj.CoreCompileInputs.cache
+C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.AssemblyInfoInputs.cache
+C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.AssemblyInfo.cs
+C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.dll
+C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.pdb
+C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.csprojResolveAssemblyReference.cache
