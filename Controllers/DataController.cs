@@ -10,21 +10,37 @@ namespace BIApi.Controllers
     [Route("api/[controller]")]
     public class DataController : Controller
     {
-        // GET api/data
-        [HttpGet]
-        public BaseModel Get()
+        /// <summary>
+        /// Lấy danh sách dịch vụ y tế.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "id": 1,
+        ///        "name": "Item1",
+        ///        "isComplete": true
+        ///     }
+        ///
+        /// </remarks>
+        /// <returns>Kết quả trả về</returns>
+        [Produces("application/json")]
+        [HttpPost("MedicalServices")]
+        public ResultModel MedicalServices([FromBody]List<MedicalServiceModel> data)
         {
-            var resultModel = new BaseModel();
-            var patients = new List<Patient>();
-            var db = new DB();
-            try {
-                patients = db.Patients.ToList();
-            }
-            catch(Exception e) {
-                resultModel.IsError = true;
-                resultModel.Message = e.Message;
-            }
-            resultModel.Data = patients;
+            var resultModel = new ResultModel();
+            // var patients = new List<Patient>();
+            // var db = new DB();
+            // try {
+            //     patients = db.Patients.ToList();
+            // }
+            // catch(Exception e) {
+            //     resultModel.IsError = true;
+            //     resultModel.Message = e.Message;
+            // }
+            // resultModel.Data = patients;
+            resultModel.Data = data;
 
             return resultModel;
         }
