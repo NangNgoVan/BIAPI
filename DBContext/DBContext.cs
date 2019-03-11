@@ -7,7 +7,8 @@ namespace BIApi.DBContext {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
-            optionsBuilder.UseSqlServer(@"Server=NANG-PC\SQLEXPRESS;Database=VIETBA_DWH;User Id=nang;Password=123456;Trusted_Connection=True;");
+            optionsBuilder
+                .UseSqlServer(@"Data Source=MY-AK7EGE7HDPMU\SQLEXPRESS;Database=BI_VIETBA_DW;Integrated Security=False;User Id=nang;Password=123456; MultipleActiveResultSets=True");
         }
     }
 }

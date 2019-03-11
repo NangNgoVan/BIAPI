@@ -9,3 +9,14 @@ C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.AssemblyInfo.cs
 C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.dll
 C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.pdb
 C:\Users\nangn_000\Desktop\BIApi\obj\Release\netcoreapp2.0\BIApi.csprojResolveAssemblyReference.cache
+D:\NANG NGO\DATA\BIAPI\bin\Release\netcoreapp2.0\BIApi.deps.json
+D:\NANG NGO\DATA\BIAPI\bin\Release\netcoreapp2.0\BIApi.runtimeconfig.json
+D:\NANG NGO\DATA\BIAPI\bin\Release\netcoreapp2.0\BIApi.runtimeconfig.dev.json
+D:\NANG NGO\DATA\BIAPI\bin\Release\netcoreapp2.0\BIApi.dll
+D:\NANG NGO\DATA\BIAPI\bin\Release\netcoreapp2.0\BIApi.pdb
+D:\NANG NGO\DATA\BIAPI\obj\Release\netcoreapp2.0\BIApi.csprojAssemblyReference.cache
+D:\NANG NGO\DATA\BIAPI\obj\Release\netcoreapp2.0\BIApi.csproj.CoreCompileInputs.cache
+D:\NANG NGO\DATA\BIAPI\obj\Release\netcoreapp2.0\BIApi.AssemblyInfoInputs.cache
+D:\NANG NGO\DATA\BIAPI\obj\Release\netcoreapp2.0\BIApi.AssemblyInfo.cs
+D:\NANG NGO\DATA\BIAPI\obj\Release\netcoreapp2.0\BIApi.dll
+D:\NANG NGO\DATA\BIAPI\obj\Release\netcoreapp2.0\BIApi.pdb

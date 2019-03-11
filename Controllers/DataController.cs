@@ -8,19 +8,25 @@ using BIApi.DBContext;
 namespace BIApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class DataController : Controller
     {
-        // GET api/values
+        // GET api/data
         [HttpGet]
-        public List<Patient> Get()
+        public BaseModel Get()
         {
+            var resultModel = new BaseModel();
             var patients = new List<Patient>();
-
-            using(var db = new DB()){
+            var db = new DB();
+            try {
                 patients = db.Patients.ToList();
             }
+            catch(Exception e) {
+                resultModel.IsError = true;
+                resultModel.Message = e.Message;
+            }
+            resultModel.Data = patients;
 
-            return patients;
+            return resultModel;
         }
 
         // GET api/values/5
