@@ -22,3 +22,5 @@ D:\NANG NGO\DATA\BIAPI\obj\Debug\netcoreapp2.0\BIApi.dll
 D:\NANG NGO\DATA\BIAPI\obj\Debug\netcoreapp2.0\BIApi.pdb
 C:\Users\nangn_000\Desktop\BIApi\bin\Debug\netcoreapp2.0\BIApi.xml
 C:\Users\nangn_000\Desktop\BIApi\obj\Debug\netcoreapp2.0\BIApi.xml
+D:\NANG NGO\DATA\BIAPI\bin\Debug\netcoreapp2.0\BIApi.xml
+D:\NANG NGO\DATA\BIAPI\obj\Debug\netcoreapp2.0\BIApi.xml

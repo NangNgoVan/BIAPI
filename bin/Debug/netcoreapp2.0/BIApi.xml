@@ -4,22 +4,53 @@
         <name>BIApi</name>
     </assembly>
     <members>
-        <member name="M:BIApi.Controllers.DataController.MedicalServices(System.Collections.Generic.List{MedicalServiceModel})">
+        <member name="M:BIApi.Controllers.DataController.MedicalDiseases(System.Collections.Generic.List{MedicalDiseaseModel})">
              <summary>
-             Lấy danh sách dịch vụ y tế.
-             </summary>
-             <remarks>
-             Sample request:
+             Lấy danh sách các bệnh.
+            </summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.MedicalDiseaseTypes(System.Collections.Generic.List{MedicalDiseaseTypeModel})">
+             <summary>
+                 Lấy danh sách các loại bệnh.
+            </summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.Clinics(System.Collections.Generic.List{ClinicModel})">
+            <summary>
+                Lấy danh sách phòng khám bệnh.
+            </summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.OutpatientDepts(System.Collections.Generic.List{OutpatientDeptModel})">
+            <summary>
+                Lấy danh sách khoa khám bệnh.
+            </summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.Hospitals(System.Collections.Generic.List{HospitalModel})">
+            <summary>Lấy danh sách cơ sở khám bệnh.</summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.MedicalEquipments(System.Collections.Generic.List{MedicalEquipmentModel})">
+            <summary>Lấy danh sách thiết bị y tế.</summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.MedicalProfessions(System.Collections.Generic.List{MedicalProfessionModel})">
+            <summary>Lấy danh sách chuyên môn khám.</summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.Doctors(System.Collections.Generic.List{DoctorModel})">
+            <summary>Lấy danh sách bác sỹ.</summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.IllnessStates(System.Collections.Generic.List{IllnessStateModel})">
+            <summary>Lấy danh sách tình trạng bệnh.</summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.MedicalServices(System.Collections.Generic.List{MedicalServiceModel})">
+            <summary>Lấy danh sách dịch vụ y tế.</summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.MedicalServiceGroups(System.Collections.Generic.List{MedicalServiceGroupModel})">
+            <summary>Lấy danh sách nhóm dịch vụ y tế.</summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.MedicalServiceTypes(System.Collections.Generic.List{MedicalServiceTypeModel})">
+            <summary>Lấy danh sách loại dịch vụ y tế.</summary>
+        </member>
+        <member name="M:BIApi.Controllers.DataController.MedicalAttentionServices(System.Collections.Generic.List{TreatmentFactModel})">
+             <summary>Thông tin khám chữa bệnh hàng ngày.</summary>
             
-                 POST /Todo
-                 {
-                    "id": 1,
-                    "name": "Item1",
-                    "isComplete": true
-                 }
-            
-             </remarks>
-             <returns>Kết quả trả về</returns>
         </member>
     </members>
 </doc>
