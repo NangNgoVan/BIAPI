@@ -1,204 +1,341 @@
+using BIApi.DBContext;
 using System;
 using System.Collections.Generic;
-using BIApi.DBContext;
 public class DataService {
     private static readonly DB dbCtx = new DB();
 
     public static ResultModel LoadDimDoctor (List<DoctorModel> data){
         var result = new ResultModel();
-         try {
-            foreach(var doctor in data) {
+        var failedItemList = new List<DoctorModel>();
+        foreach (var doctor in data)
+        {
+            var entry = dbCtx.Doctors.Find(doctor.DoctorId);
+            if (entry == null)
+            {
                 dbCtx.Doctors.Add(doctor);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
-        } catch(Exception e) {
-            result.IsError = true;
-            result.Message = e.Message;
+            else failedItemList.Add(doctor);
         }
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
+            result.IsError = true;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
+        }
+
         return result;
     }
-
     public static ResultModel LoadDimMedicalDisease(List<MedicalDiseaseModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var disease in data) {
+        var failedItemList = new List<MedicalDiseaseModel>();
+        foreach (var disease in data)
+        {
+            var entry = dbCtx.MedicalDiseases.Find(disease.DiseaseId);
+            if (entry == null)
+            {
                 dbCtx.MedicalDiseases.Add(disease);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(disease);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimMedicalDiseaseType(List<MedicalDiseaseTypeModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var diseaseType in data) {
+        var failedItemList = new List<MedicalDiseaseTypeModel>();
+        foreach (var diseaseType in data)
+        {
+            var entry = dbCtx.MedicalDiseaseTypes.Find(diseaseType.DiseaseTypeId);
+            if (entry == null)
+            {
                 dbCtx.MedicalDiseaseTypes.Add(diseaseType);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(diseaseType);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimClinic(List<ClinicModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var clinic in data) {
+        var failedItemList = new List<ClinicModel>();
+        foreach (var clinic in data)
+        {
+            var entry = dbCtx.Clinics.Find(clinic.ClinicId);
+            if (entry == null)
+            {
                 dbCtx.Clinics.Add(clinic);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(clinic);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimOupatientDept(List<OutpatientDeptModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var outpatientDept in data) {
+        var failedItemList = new List<OutpatientDeptModel>();
+        foreach (var outpatientDept in data)
+        {
+            var entry = dbCtx.OutpatientDepts.Find(outpatientDept.OutpatientDeptId);
+            if (entry == null)
+            {
                 dbCtx.OutpatientDepts.Add(outpatientDept);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(outpatientDept);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimHospital(List<HospitalModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var hospital in data) {
-                dbCtx.Hospitals.Add(hospital);
+        var failedItemList = new List<HospitalModel>();
+        foreach (var hosptital in data)
+        {
+            var entry = dbCtx.Hospitals.Find(hosptital.HospitalId);
+            if (entry == null)
+            {
+                dbCtx.Hospitals.Add(hosptital);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(hosptital);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimMedicalEquipment(List<MedicalEquipmentModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var medicalEquipment in data) {
-                dbCtx.MedicalEquipments.Add(medicalEquipment);
+        var failedItemList = new List<MedicalEquipmentModel>();
+        foreach (var equipment in data)
+        {
+            var entry = dbCtx.MedicalEquipments.Find(equipment.MedicalEquipmentId);
+            if (entry == null)
+            {
+                dbCtx.MedicalEquipments.Add(equipment);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(equipment);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
-     public static ResultModel LoadDimMedicalProfession(List<MedicalProfessionModel> data){
+    public static ResultModel LoadDimMedicalProfession(List<MedicalProfessionModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var medicalProfession in data) {
+        var failedItemList = new List<MedicalProfessionModel>();
+        foreach (var medicalProfession in data)
+        {
+            var entry = dbCtx.MedicalProfessions.Find(medicalProfession.MedicalProfessionId);
+            if (entry == null)
+            {
                 dbCtx.MedicalProfessions.Add(medicalProfession);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(medicalProfession);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimIllnessState(List<IllnessStateModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var illnessState in data) {
+        var failedItemList = new List<IllnessStateModel>();
+        foreach (var illnessState in data)
+        {
+            var entry = dbCtx.IllnessStates.Find(illnessState.IllnessStateId);
+            if (entry == null)
+            {
                 dbCtx.IllnessStates.Add(illnessState);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(illnessState);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimMedicalService(List<MedicalServiceModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var medicalService in data) {
+        var failedItemList = new List<MedicalServiceModel>();
+        foreach (var medicalService in data)
+        {
+            var entry = dbCtx.MedicalServices.Find(medicalService.MedicalServiceId);
+            if (entry == null)
+            {
                 dbCtx.MedicalServices.Add(medicalService);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(medicalService);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimMedicalServiceGroup(List<MedicalServiceGroupModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var medicalServiceGroup in data) {
+        var failedItemList = new List<MedicalServiceGroupModel>();
+        foreach (var medicalServiceGroup in data)
+        {
+            var entry = dbCtx.MedicalServiceGroups.Find(medicalServiceGroup.MedicalServiceGroupId);
+            if (entry == null)
+            {
                 dbCtx.MedicalServiceGroups.Add(medicalServiceGroup);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(medicalServiceGroup);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
     public static ResultModel LoadDimMedicalServiceType(List<MedicalServiceTypeModel> data){
         var result = new ResultModel();
-        try {
-            foreach(var medicalServiceType in data) {
+        var failedItemList = new List<MedicalServiceTypeModel>();
+        foreach (var medicalServiceType in data)
+        {
+            var entry = dbCtx.MedicalServiceTypes.Find(medicalServiceType.MedicalServiceTypeId);
+            if (entry == null)
+            {
                 dbCtx.MedicalServiceTypes.Add(medicalServiceType);
             }
-            dbCtx.SaveChanges();
-            result.IsError = false;
-            result.Data = data;
+            else failedItemList.Add(medicalServiceType);
         }
-        catch(Exception e) {
+        dbCtx.SaveChanges();
+
+        if (failedItemList.Count > 0)
+        {
             result.IsError = true;
-            result.Message = e.Message;
+            result.Message = nameof(BIApi.Enums.Code.INSERT_ERROR);
+            result.Data = failedItemList;
         }
+
         return result;
     }
-    public static ResultModel ETLMedicalAttentionServiceFact(List<TreatmentFactModel> data){
+    public static ResultModel LoadMedicalAttentionServiceFact(List<TreatmentFactModel> data){
         var result = new ResultModel();
-        // ...
+        using (var transaction = dbCtx.Database.BeginTransaction())
+        {
+            try
+            {
+                foreach(var treatmentFactItem in data)
+                {
+                    //
+                    var patienEntry = dbCtx.PatientInfos.Find(treatmentFactItem.patient.PatientId);
+                    if (patienEntry == null)
+                        dbCtx.PatientInfos.Add(treatmentFactItem.patient);
+                    dbCtx.SaveChanges();
+                    //
+                    foreach(var medicalAttentionJsonItem in treatmentFactItem.treamentServices)
+                    {
+                        var medicalAttentionServiceItem = (MedicalAttentionServiceModel)medicalAttentionJsonItem;
+                        medicalAttentionServiceItem.PatientCode = treatmentFactItem.PatientCode;
+                        var entry = dbCtx.MedicalAttentionServices.Find(medicalAttentionServiceItem.MedicalServiceId);
+                        if (entry != null)
+                            dbCtx.MedicalAttentionServices.Add(entry);
+                        //entry = medicalAttentionServiceItem;
+                    }
+                    dbCtx.SaveChanges();
+                    //
+                    MedicalAttentionModel medicalAttentionItem = new MedicalAttentionModel
+                    {
+                        PatientCode = treatmentFactItem.PatientCode,
+                        PatientId = treatmentFactItem.patient.PatientId,
+                        IllnessStateId = treatmentFactItem.IllnessStateId
+                    };
+                    dbCtx.MedicalAttentions.Add(medicalAttentionItem);
+                    dbCtx.SaveChanges();
+                    //
+                    foreach(var diseaseId in treatmentFactItem.diseaseIds)
+                    {
+                        MedicalAttensionDiseaseModel medicalAttensionDiseaseItem = new MedicalAttensionDiseaseModel()
+                        {
+                            PatientCode = treatmentFactItem.PatientCode,
+                            DiseaseId = diseaseId
+                        };
+                        var medicalAttensionDiseaseEntry = dbCtx.MedicalAttensionDiseases.Find(medicalAttensionDiseaseItem.PatientCode);
+                        if (medicalAttensionDiseaseEntry == null)
+                            dbCtx.MedicalAttensionDiseases.Add(medicalAttensionDiseaseItem);
+                    }
+                    dbCtx.SaveChanges();
+                }
+                transaction.Commit();
+            }
+            catch(Exception e)
+            {
+                //
+                result.IsError = true;
+                result.Message = e.Message;
+            }
+        }
         return result;
     }
 }

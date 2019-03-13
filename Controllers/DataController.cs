@@ -121,7 +121,7 @@ namespace BIApi.Controllers
         [Route("medicalAttentionServices")]
         [HttpPost]
         public ResultModel MedicalAttentionServices([FromBody] List<TreatmentFactModel> data) {
-            return DataService.ETLMedicalAttentionServiceFact(data);
+            return DataService.LoadMedicalAttentionServiceFact(data);
         }
     }
 }

@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 
 public class MedicalAttentionServiceModel {
     [Key]
-    public int Id {get;set;}
     public string MedicalServiceId {get;set;} // mã dịch vụ khám
     public string PatientCode{get;set;} // mã lần khám
     public DateTime BeganTreamentDateTime {get;set;} // thời gian chỉ định khám

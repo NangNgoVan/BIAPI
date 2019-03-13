@@ -36,10 +36,6 @@ namespace BIApi.DBContext {
             modelBuilder.Entity<IllnessStateModel>().ToTable("dim_illness_states");
             modelBuilder.Entity<MedicalAttensionDiseaseModel>().ToTable("bridge_medical_attension_diseases");
             modelBuilder.Entity<DoctorModel>().ToTable("dim_doctors");
-
-            modelBuilder.Entity<MedicalAttentionServiceModel>()
-                .Property(m => m.Id)
-                .ValueGeneratedOnAdd();
         } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
