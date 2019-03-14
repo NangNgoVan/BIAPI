@@ -48,7 +48,7 @@
         <member name="M:BIApi.Controllers.DataController.MedicalServiceTypes(System.Collections.Generic.List{MedicalServiceTypeModel})">
             <summary>Lấy danh sách loại dịch vụ y tế.</summary>
         </member>
-        <member name="M:BIApi.Controllers.DataController.MedicalAttentionServices(System.Collections.Generic.List{TreatmentFactModel})">
+        <member name="M:BIApi.Controllers.DataController.MedicalAttentionServices(System.Collections.Generic.List{TreatmentJsonModel})">
              <summary>Thông tin khám chữa bệnh hàng ngày.</summary>
             
         </member>

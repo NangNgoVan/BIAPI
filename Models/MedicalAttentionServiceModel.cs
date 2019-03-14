@@ -11,10 +11,10 @@ public class MedicalAttentionServiceModel {
     public DateTime EndedTreamentDateTime {get;set;} // thời gian kết thúc khám
     public int Quantity {get;set;} // số lượng
     public decimal Price {get;set;} // đơn giá
-    public bool HealthInsurranceSuggest{get;set;} // đề nghị thanh toán theo BHYT
-    public bool HealthInsurrancePayment{get;set;} // thanh toán theo BHYT
+    public byte HealthInsurranceSuggest{get;set;} // đề nghị thanh toán theo BHYT
+    public byte HealthInsurrancePayment{get;set;} // thanh toán theo BHYT
     public string MedicalEquipmentId{get;set;} // mã thiết bị khám
-    public int IsResidentTreament{get;set;} // nội trú/ngoại trú
+    public byte IsResidentTreament{get;set;} // nội trú/ngoại trú
     public string DoctorId{get;set;} // bác sỹ khám
     public string ClinicId{get;set;} // mã phòng khám
     public string OutpatientDeptId{get;set;} // mã khoa khám

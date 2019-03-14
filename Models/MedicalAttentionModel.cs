@@ -6,4 +6,6 @@ public class MedicalAttentionModel {
     public string PatientCode {get;set;} // mã lần khám bệnh
     public string PatientId {get;set;} // mã bệnh nhân
     public string IllnessStateId {get;set;} // mã tình trạng bệnh
+
+    //public List<MedicalAttensionDiseaseModel> MedicalAttensionDiseases { get; set; }
 }

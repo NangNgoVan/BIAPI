@@ -36,6 +36,13 @@ namespace BIApi.DBContext {
             modelBuilder.Entity<IllnessStateModel>().ToTable("dim_illness_states");
             modelBuilder.Entity<MedicalAttensionDiseaseModel>().ToTable("bridge_medical_attension_diseases");
             modelBuilder.Entity<DoctorModel>().ToTable("dim_doctors");
+
+            modelBuilder.Entity<OutpatientDeptModel>()
+                .HasKey(k => new { k.HospitalId, k.OutpatientDeptId });
+            modelBuilder.Entity<ClinicModel>()
+                .HasKey(k => new { k.ClinicId, k.HospitalId, k.OutPatientDeptId });
+            modelBuilder.Entity<MedicalAttensionDiseaseModel>()
+                .HasKey(k => new { k.PatientCode, k.DiseaseId });
         } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

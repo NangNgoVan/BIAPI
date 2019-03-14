@@ -120,7 +120,7 @@ namespace BIApi.Controllers
         [Produces("application/json")]
         [Route("medicalAttentionServices")]
         [HttpPost]
-        public ResultModel MedicalAttentionServices([FromBody] List<TreatmentFactModel> data) {
+        public ResultModel MedicalAttentionServices([FromBody] List<TreatmentJsonModel> data) {
             return DataService.LoadMedicalAttentionServiceFact(data);
         }
     }

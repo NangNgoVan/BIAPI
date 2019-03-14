@@ -1,6 +1,8 @@
 using BIApi.DBContext;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 public class DataService {
     private static readonly DB dbCtx = new DB();
 
@@ -280,7 +282,7 @@ public class DataService {
 
         return result;
     }
-    public static ResultModel LoadMedicalAttentionServiceFact(List<TreatmentFactModel> data){
+    public static ResultModel LoadMedicalAttentionServiceFact(List<TreatmentJsonModel> data){
         var result = new ResultModel();
         using (var transaction = dbCtx.Database.BeginTransaction())
         {
@@ -288,45 +290,90 @@ public class DataService {
             {
                 foreach(var treatmentFactItem in data)
                 {
-                    //
-                    var patienEntry = dbCtx.PatientInfos.Find(treatmentFactItem.patient.PatientId);
-                    if (patienEntry == null)
+                    // patient info
+                    var patientEntry = dbCtx.PatientInfos.Find(treatmentFactItem.patient.PatientId);
+                    if (patientEntry == null)
+                    {
                         dbCtx.PatientInfos.Add(treatmentFactItem.patient);
+                    }
+                    else
+                    {
+                        dbCtx.PatientInfos.Remove(patientEntry);
+                        dbCtx.PatientInfos.Add(treatmentFactItem.patient);
+                    }  
                     dbCtx.SaveChanges();
-                    //
-                    foreach(var medicalAttentionJsonItem in treatmentFactItem.treamentServices)
+                    // medical service
+                    // truncate
+                    var medicalServiceLists = dbCtx.MedicalAttentionServices.Where(m => m.PatientCode == treatmentFactItem.PatientCode);
+                    dbCtx.MedicalAttentionServices.RemoveRange(medicalServiceLists);
+                    // insert
+                    foreach (var medicalAttentionJsonItem in treatmentFactItem.treamentServices)
                     {
                         var medicalAttentionServiceItem = (MedicalAttentionServiceModel)medicalAttentionJsonItem;
                         medicalAttentionServiceItem.PatientCode = treatmentFactItem.PatientCode;
                         var entry = dbCtx.MedicalAttentionServices.Find(medicalAttentionServiceItem.MedicalServiceId);
-                        if (entry != null)
-                            dbCtx.MedicalAttentionServices.Add(entry);
-                        //entry = medicalAttentionServiceItem;
+                        if (entry == null)
+                        {
+                            dbCtx.MedicalAttentionServices.Add(medicalAttentionServiceItem);
+                        }
+                        else
+                        {
+                            dbCtx.MedicalAttentionServices.Remove(entry);
+                            dbCtx.MedicalAttentionServices.Add(medicalAttentionServiceItem);
+                        }
                     }
                     dbCtx.SaveChanges();
-                    //
+                    // medical attension
+                    // truncate
+                    var medicalAttensionList = dbCtx.MedicalAttentions.Where(m => m.PatientCode == treatmentFactItem.PatientCode);
+                    dbCtx.MedicalAttentions.RemoveRange(medicalAttensionList);
+                    // insert
                     MedicalAttentionModel medicalAttentionItem = new MedicalAttentionModel
                     {
                         PatientCode = treatmentFactItem.PatientCode,
                         PatientId = treatmentFactItem.patient.PatientId,
                         IllnessStateId = treatmentFactItem.IllnessStateId
                     };
-                    dbCtx.MedicalAttentions.Add(medicalAttentionItem);
+                    var medicalAttentionEntry = dbCtx.MedicalAttentions.Find(medicalAttentionItem.PatientCode);
+                    if (medicalAttentionEntry == null)
+                    {
+                        dbCtx.MedicalAttentions.Add(medicalAttentionItem);
+                    }
+                    else
+                    {
+                        dbCtx.MedicalAttentions.Remove(medicalAttentionEntry);
+                        dbCtx.MedicalAttentions.Add(medicalAttentionItem);
+                    }
                     dbCtx.SaveChanges();
-                    //
-                    foreach(var diseaseId in treatmentFactItem.diseaseIds)
+                    // medical attension disease
+                    // truncate
+                    var medicalAttensionDiseaseList = dbCtx.MedicalAttensionDiseases.Where(m => m.PatientCode == treatmentFactItem.PatientCode);
+                    dbCtx.MedicalAttensionDiseases.RemoveRange(medicalAttensionDiseaseList);
+                    // insert
+                    foreach (var diseaseId in treatmentFactItem.diseaseIds)
                     {
                         MedicalAttensionDiseaseModel medicalAttensionDiseaseItem = new MedicalAttensionDiseaseModel()
                         {
                             PatientCode = treatmentFactItem.PatientCode,
                             DiseaseId = diseaseId
                         };
-                        var medicalAttensionDiseaseEntry = dbCtx.MedicalAttensionDiseases.Find(medicalAttensionDiseaseItem.PatientCode);
-                        if (medicalAttensionDiseaseEntry == null)
+                        var entry = dbCtx.MedicalAttensionDiseases.Find(treatmentFactItem.PatientCode, diseaseId);
+                        if (entry == null)
+                        {
                             dbCtx.MedicalAttensionDiseases.Add(medicalAttensionDiseaseItem);
+                        }
+                        else
+                        {
+                            dbCtx.MedicalAttensionDiseases.Remove(entry);
+                            dbCtx.MedicalAttensionDiseases.Add(medicalAttensionDiseaseItem);
+                        }
                     }
                     dbCtx.SaveChanges();
                 }
+
+                result.IsError = false;
+                result.Message = nameof(BIApi.Enums.Code.SUCCESS);
+                result.Data = data;
                 transaction.Commit();
             }
             catch(Exception e)

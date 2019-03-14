@@ -9,5 +9,6 @@ namespace BIApi.Enums
     {
         INSERT_ERROR,
         UPDATE_ERROR,
+        SUCCESS
     }
 }
