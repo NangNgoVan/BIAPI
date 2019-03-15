@@ -29,7 +29,11 @@ namespace BIApi
             services.AddMvc();
              services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "API lấy dữ liệu.", Version = "v1" });
+                c.SwaggerDoc("v1", new Info {
+                    Title = "API lấy dữ liệu.",
+                    Version = "v1",
+                    Description = "Đẩy dữ liệu vào dwh Vietba",
+                });
                 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

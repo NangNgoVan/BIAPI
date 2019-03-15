@@ -43,6 +43,8 @@ namespace BIApi.DBContext {
                 .HasKey(k => new { k.ClinicId, k.HospitalId, k.OutPatientDeptId });
             modelBuilder.Entity<MedicalAttensionDiseaseModel>()
                 .HasKey(k => new { k.PatientCode, k.DiseaseId });
+            modelBuilder.Entity<MedicalAttentionServiceModel>()
+                .HasKey(k => new { k.MedicalServiceId, k.PatientCode });
         } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

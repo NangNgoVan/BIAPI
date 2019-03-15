@@ -6,51 +6,258 @@
     <members>
         <member name="M:BIApi.Controllers.DataController.MedicalDiseases(System.Collections.Generic.List{MedicalDiseaseModel})">
              <summary>
-             Lấy danh sách các bệnh.
+             Danh sách các bệnh.
             </summary>
+             <remarks>
+             Json:
+            
+                 POST /medicalDisease
+                 [
+                     {
+                         "diseaseId": "mã bệnh",
+                         "diseaseTypeId": "mã loại bệnh",
+                         "diseaseName": "tên bệnh"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.MedicalDiseaseTypes(System.Collections.Generic.List{MedicalDiseaseTypeModel})">
-             <summary>
-                 Lấy danh sách các loại bệnh.
+            <summary>
+                 Danh sách các loại bệnh.
             </summary>
+             <remarks>
+             Json:
+            
+                 POST /medicalDiseaseTypes
+                 [
+                     {
+                         "diseaseTypeId": "mã loại bệnh",
+                         "diseaseTypeName": "tên loại bệnh" 
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.Clinics(System.Collections.Generic.List{ClinicModel})">
-            <summary>
-                Lấy danh sách phòng khám bệnh.
-            </summary>
+             <summary>
+                 Danh sách phòng khám bệnh.
+             </summary>
+             <remarks>
+             Json:
+            
+                 POST /clinics
+                 [
+                     {
+                         "clinicId": "mã phòng khám",
+                         "clinicName": "tên phòng khám" ,
+                         "hospitalId":"mã cơ sở khám",
+                         "outPatientDeptId":"mã khoa khám"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.OutpatientDepts(System.Collections.Generic.List{OutpatientDeptModel})">
-            <summary>
-                Lấy danh sách khoa khám bệnh.
-            </summary>
+             <summary>
+                 Danh sách khoa khám bệnh.
+             </summary>
+             <remarks>
+             Json:
+            
+                 POST /outpatientDepts
+                 [
+                     {
+                         "outpatientDeptId": "mã khoa khám",
+                         "outpatientDeptName": "tên khoa khám",
+                         "hospitalId": "mã cơ sở khám"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.Hospitals(System.Collections.Generic.List{HospitalModel})">
-            <summary>Lấy danh sách cơ sở khám bệnh.</summary>
+             <summary>Danh sách cơ sở khám bệnh.</summary>
+             <remarks>
+             Json:
+            
+                 POST /hospitals
+                 [
+                     {
+                         "hospitalId": "mã cơ sở khám",
+                         "hospitalName": "tên sơ sở khám",
+                         "bedNumber": (int) số giường bệnh
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.MedicalEquipments(System.Collections.Generic.List{MedicalEquipmentModel})">
-            <summary>Lấy danh sách thiết bị y tế.</summary>
+             <summary>Danh sách thiết bị y tế.</summary>
+             <remarks>
+             Json:
+            
+                 POST /medicalEquipments
+                 [
+                     {
+                         "medicalEquipmentId": "mã thiết bị y tế",
+                         "medicalEquipmentName": "tên thiết bị y tế"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.MedicalProfessions(System.Collections.Generic.List{MedicalProfessionModel})">
-            <summary>Lấy danh sách chuyên môn khám.</summary>
+             <summary>Danh sách chuyên môn khám.</summary>
+             <remarks>
+             Json:
+            
+                 POST /medicalProfessions
+                 [
+                     {
+                         "medicalProfessionId": "mã chuyên môn khám",
+                         "medicalProfessionName": "tên chuyên môn khám"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.Doctors(System.Collections.Generic.List{DoctorModel})">
-            <summary>Lấy danh sách bác sỹ.</summary>
+             <summary>Danh sách bác sỹ.</summary>
+             <remarks>
+             Json:
+            
+                 POST /doctors
+                 [
+                     {
+                         "doctorId": "mã bác sỹ",
+                         "doctorName": "tên bác sỹ",
+                         "hospitalId": "mã cơ sở khám"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.IllnessStates(System.Collections.Generic.List{IllnessStateModel})">
-            <summary>Lấy danh sách tình trạng bệnh.</summary>
+             <summary>Danh sách tình trạng bệnh.</summary>
+             <remarks>
+             Json:
+            
+                 POST /illnessStates
+                 [
+                     {
+                         "illnessStateId": "mã tình trạng bệnh",
+                         "illnessStateName": "tên tình trạng bệnh",
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.MedicalServices(System.Collections.Generic.List{MedicalServiceModel})">
-            <summary>Lấy danh sách dịch vụ y tế.</summary>
+             <summary>Danh sách dịch vụ y tế.</summary>
+             <remarks>
+             Json:
+            
+                 POST /medicalServices
+                 [
+                     {
+                         "medicalServiceTypeId": "mã loại dịch vụ y tế",
+                         "medicalServiceId": "mã dịch vụ y tế",
+                         "medicalServiceName": "tên dịch vụ y tế",
+                         "medicalProfessionId": "mã chuyên môn khám"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.MedicalServiceGroups(System.Collections.Generic.List{MedicalServiceGroupModel})">
-            <summary>Lấy danh sách nhóm dịch vụ y tế.</summary>
+             <summary>Danh sách nhóm dịch vụ y tế.</summary>
+             <remarks>
+             Json:
+            
+                 POST /medicalGroupServices
+                 [
+                     {
+                         "medicalServiceGroupId": "mã nhóm dịch vụ y tế",
+                         "medicalServiceGroupName": "tên nhóm dịch vụ y tế",
+                         "medicalServicetypeId": "mã loại dịch vụ y tế"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.MedicalServiceTypes(System.Collections.Generic.List{MedicalServiceTypeModel})">
-            <summary>Lấy danh sách loại dịch vụ y tế.</summary>
+             <summary>Danh sách loại dịch vụ y tế.</summary>
+             <remarks>
+             Json:
+            
+                 POST /medicalServiceTypes
+                 [
+                     {
+                         "medicalServiceTypeId": "mã loại dịch vụ y tế",
+                         "medicalServiceTypeName": "tên loại dịch vụ y tế"
+                     },
+                     ...
+                 ]
+            
+             </remarks>
         </member>
         <member name="M:BIApi.Controllers.DataController.MedicalAttentionServices(System.Collections.Generic.List{TreatmentJsonModel})">
              <summary>Thông tin khám chữa bệnh hàng ngày.</summary>
+             <remarks>
+             Json:
             
+                 POST /medicalAttensionServices
+                 [
+                     {
+                         "patient": {
+                             "patientId": "mã bệnh nhân",
+                             "patientName": "tên bệnh nhân",
+                             "patientAddress": "địa chỉ",
+                             "patientBirthDate": "ngày sinh",
+                             "patientSex": "giới tính"
+                         }
+                         "patientCode": "mã lần khám",
+                         "treamentServices": [
+                             {
+                                 "medicalServiceId": "mã dịch vụ khám",
+                                 "beganTreamentDateTime": "thời gian...",
+                                 "reveicedTreamentDateTime": "",
+                                 "endedTreamentDateTime": "",
+                                 "quantity": (int) số lượng,
+                                 "price": (decimal) đơn giá,
+                                 "healthInsurranceSuggest": "đề nghị thanh toán theo BHYT (0-không, 1-có)",
+                                 "healthInsurrancePayment": "thanh toán theo BHYT (0-không, 1-có)",
+                                 "medicalEquipmentId": "mã thiết bị khám",
+                                 "isResidentTreament": "",
+                                 "doctorId": "mã bác sỹ",
+                                 "clinicId": "mã phòng khám",
+                                 "outpatientDeptId": "mã khoa khám",
+                                 "hospitalId": "mã cơ sở khám"
+                             },
+                             ...
+                         ],
+                         "diseaseIds" : [
+                             "mã bệnh",
+                             ...
+                         ],
+                         "illnessStateId": "mã trạng thái bệnh"
+                     }
+            
+                 ]
+            
+             </remarks>
         </member>
     </members>
 </doc>
